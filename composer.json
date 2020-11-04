@@ -1,0 +1,32 @@
+{
+    "name": "burhancelebi/rpaginate",
+    "description": "RPaginate laravel redis package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Burhan Çelebi",
+            "email": "burhan.celebi.2112@gmail.com"
+        }
+    ],
+
+    "require": {
+        "predis/predis": "^1.1"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "RPaginate\\": "src/"
+        }
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RPaginate\\RPaginateServiceProvider"
+            ]
+        }
+    },
+
+    "minimum-stability": "dev"
+}
