@@ -29,23 +29,23 @@ class Consumer implements AMQPMessageInterface
         return $this->channel;
     }
 
-    public function queueDeclare($passive = false, $durable = true, $exclusive = false, $auto_delete = false)
+    public function queueDeclare(array $queue_declare = [])
     {
         return $this->channel->queue_declare($this->queue, 
-                                            $passive,
-                                            $durable,
-                                            $exclusive, 
-                                            $auto_delete
+                                            $queue_declare['passive'] ?? false,
+                                            $queue_declare['durable'] ?? true,
+                                            $queue_declare['exclusive'] ?? false, 
+                                            $queue_declare['auto_delete'] ?? false
                                         );
     }
 
-    public function exchangeDeclare($exchange_type = 'direct', $passive = false, $durable = true, $auto_delete = false)
+    public function exchangeDeclare(array $exchange_declare = [])
     {
         return $this->channel->exchange_declare($this->exchange,
-                                            $exchange_type, 
-                                            $passive = false, 
-                                            $durable = true, 
-                                            $auto_delete = false
+                                            $exchange_declare['exchange_type'] ?? 'direct', 
+                                            $exchange_declare['passive'] ?? false, 
+                                            $exchange_declare['durable'] ?? true, 
+                                            $exchange_declare['auto_delete'] ?? false
                                         );
     }
 
